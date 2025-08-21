@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import google.generativeai as genai
 import os
@@ -23,6 +23,11 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 
 # Path to store the latest response
 RESPONSE_FILE_PATH = 'latest_response.txt'
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 
 # Farming recommendation endpoint
 # Modify the chat endpoint to store environmental data
